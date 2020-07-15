@@ -31,14 +31,12 @@ cd dashTS_example
 ```
 
 You can open it in VSCode now:
-
 ```
 code .
 ```
- 
 
-In VSCode, open the terminal with ``Ctrl+```
-*(Alternatively you can use the "normal" terminal)*
+In VSCode, open the terminal with `Ctrl` + `
+*(Alternatively you can use the "normal" terminal from the previous steps)*
 
 Then init the npm project with
 ```
@@ -47,9 +45,9 @@ npm init
 
 And install DashJS
 - Globally
-   `npm i dash -g`
+    `npm i dash -g`
 - Locally
-   ` npm i dash -D`
+    ` npm i dash -D`
 
 
 
@@ -59,9 +57,9 @@ Duration: 2
 
 If TypeScript is not installed already you can install it
 - Globally:
-   `npm i typescript -g`
+    `npm i typescript -g`
 - Locally (for this project only
-   `npm i typescript -D`
+    `npm i typescript -D`
 
 Also create an output folder for later:
 ```
@@ -82,24 +80,24 @@ Duration: 3
 There are a view options for additional setup. You can:
 
 - Install a linter
-   - Either by installing the VSCode plugin `TSLint` (*recommended*) or
-   - Install via npm
-       - Globally:
-           > npm i tslint -g
-       - Locally:
-           > npm i typescript -D
+    - Either by installing the VSCode plugin `TSLint` (*recommended*) or
+    - Or via npm
+        - Globally:
+            `npm i tslint -g`
+        - Locally:
+            `npm i typescript -D`
 
 - Automate the compilation of TypeScript
-   1. Open the file `tsconfig.json` in VSCode
-   2. Uncomment the line beginning with `"outDir"`
-   3. Replace `"./"` with `"./dist"`
-       Save and close the file.
-   4. Open the file `package.json` in VSCode
-   5. You should see a line beginning with `"test"`.
-       Insert `"start": "tsc && node dist/app.js",` **before** that line.
-       Save and close the file.
+    1. Open the file `tsconfig.json` in VSCode
+    2. Uncomment the line beginning with `"outDir"`
+    3. Replace `"./"` with `"./dist"`
+        Save and close the file.
+    4. Open the file `package.json` in VSCode
+    5. You should see a line beginning with `"test"`.
+        Insert `"start": "tsc && node dist/app.js",`  
+        **before** that line. Save and close the file.
 
-   Now You can simply type `npm start` and it will automatically compile and run your code from `app.ts`
+    Now You can simply type `npm start` and it will automatically compile and run your code from `app.ts`
 
 
 
@@ -146,16 +144,16 @@ import * as Dash from "dash";
 Then we need a new client. It's pretty simple to create one, but we need to do it a lot, which means it's best practice to put it into a function.
 ``` typescript
 const initClient = (mnemonic = null) => {
- return new Dash.Client({
-   network: "testnet", // As long as this line is kept, all operations will only be on the testnet
-   wallet: { mnemonic } // If mnemonic is null, Wallet-lib will create new mnemonic
- });
+  return new Dash.Client({
+    network: "testnet", // As long as this line is kept, all operations will only be on the testnet
+    wallet: { mnemonic } // If mnemonic is null, Wallet-lib will create new mnemonic
+  });
 };
 ```
 
 Now, in order to create a wallet and retrieve some useful data from it, You simply do:
 ``` typescript
-get and print mnemonic, unused adresse, etc. here
+// get and print mnemonic, unused adresse, etc. here
 ```
 
 
@@ -191,4 +189,3 @@ Duration: 2
 ``` typescript
 // send Dash, probably print account balance again
 ```
-
