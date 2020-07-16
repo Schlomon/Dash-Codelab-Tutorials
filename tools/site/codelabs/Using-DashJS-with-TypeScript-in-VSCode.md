@@ -6,19 +6,12 @@ tags: medium
 status: Published
 authors: Rion, Schlomon
 feedback link: https://github.com/Schlomon/DashJS-TS-Tutorial/issues
-<<<<<<< HEAD:DashJSInTypeScriptTut/Using-DashJS-with-TypeScript-in-VSCode.md
----
-=======
->>>>>>> upstream/master:tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md
 
 ---
 
-<<<<<<< HEAD:DashJSInTypeScriptTut/Using-DashJS-with-TypeScript-in-VSCode.md
-=======
 
 # How to use DashJS with TypeScript in VSCode
 
->>>>>>> upstream/master:tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md
 <!-- ------------------------ -->
 ## Overview
 
