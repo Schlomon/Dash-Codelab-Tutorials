@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-07-16T09:16:16+02:00",
+  "id": "Using-DashJS-with-TypeScript-in-VSCode",
+  "duration": 18,
+  "title": "How to use DashJS with TypeScript in VSCode",
+  "authors": "Rion, Schlomon",
+  "summary": "Using DashJS with TypeScript in VSCode",
+  "source": "Using-DashJS-with-TypeScript-in-VSCode.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "typescript"
+  ],
+  "tags": [
+    "medium"
+  ],
+  "feedback": "example.com",
+  "url": "Using-DashJS-with-TypeScript-in-VSCode"
+}
