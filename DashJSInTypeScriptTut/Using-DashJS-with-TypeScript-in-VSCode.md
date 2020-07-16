@@ -5,7 +5,7 @@ categories: Typescript
 tags: medium
 status: Published
 authors: Rion, Schlomon
-Feedback Link: example.com
+feedback link: https://github.com/Schlomon/DashJS-TS-Tutorial/issues
 ---
 
 # How to use DashJS with TypeScript in VSCode
@@ -74,7 +74,7 @@ Then run the following to complete the setup:
 npx tsc --init
 ```
 
-You can also create a file called app.ts for later use.
+You can also create a file called `app.ts` for later use.
 
 <!-- ------------------------ -->
 ## Optional setup
