@@ -123,7 +123,7 @@ Then in the console type `npm start`
 If everything worked you should get an output similar to:
 
 ```text
-> dashts_example@1.0.0 start DASH/dashTS_example
+> dashts_example@1.0.0 start /dashTS_example
 > tsc && node dist/app.js
 
 hello
@@ -158,6 +158,15 @@ Now, in order to create a wallet and retrieve some useful data from it, You simp
 ```typescript
 // get and print mnemonic, unused adresse, etc. here
 ```
+
+Hint: To autofromat your TS code you can use one of the following shortcuts:
+* Windows: `Shift` + `Alt` + `F`
+* Mac: `Shift` + `Option` + `F`
+* Linux: `Ctrl` + `Shift` + `I` or `Shift` + `Alt` + `I`
+
+If non of the above work, you can also try:
+`Ctrl` + `K` and then `Ctrl` + `F`
+
 
 <!-- ------------------------ -->
 ## Sample Code: Reading the account balance
