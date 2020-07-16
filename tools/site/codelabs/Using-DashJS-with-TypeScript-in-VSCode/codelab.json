@@ -3,7 +3,7 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2020-07-16T09:16:16+02:00",
+  "updated": "2020-07-16T17:58:46+02:00",
   "id": "Using-DashJS-with-TypeScript-in-VSCode",
   "duration": 18,
   "title": "How to use DashJS with TypeScript in VSCode",
@@ -20,6 +20,6 @@
   "tags": [
     "medium"
   ],
-  "feedback": "example.com",
+  "feedback": "https://github.com/Schlomon/DashJS-TS-Tutorial/issues",
   "url": "Using-DashJS-with-TypeScript-in-VSCode"
 }
