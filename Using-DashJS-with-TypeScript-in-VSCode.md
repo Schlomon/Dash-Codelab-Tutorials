@@ -156,6 +156,13 @@ Now, in order to create a wallet and retrieve some useful data from it, You simp
 // get and print mnemonic, unused adresse, etc. here
 ```
 
+Hint: To autofromat your TS code you can use one of the following shortcuts:
+* Windows: `Shift` + `Alt` + `F`
+* Mac: `Shift` + `Option` + `F`
+* Linux: `Ctrl` + `Shift` + `I` or `Shift` + `Alt` + `I`
+
+If non of the above work, you can also try:
+`Ctrl` + `K` and then `Ctrl` + `F`
 
 
 <!-- ------------------------ -->
