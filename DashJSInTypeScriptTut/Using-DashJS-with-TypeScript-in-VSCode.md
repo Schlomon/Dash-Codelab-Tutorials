@@ -21,7 +21,7 @@ Duration: 1
 * How to create and manage a Wallet (e.g. check a balance, send Dash, etc)
 
 <!-- ------------------------ -->
-## Npm setup
+## NPM setup
 
 Duration: 2
 
@@ -41,7 +41,7 @@ code .
 In VSCode, open the terminal with `Ctrl` + `
 *(Alternatively you can use the "normal" terminal from the previous steps)*
 
-Then initialize the npm project:
+Then initialize the NPM project:
 
 ```sh
 npm init
@@ -85,9 +85,9 @@ There are a few options for additional setup. You can:
 #### Install a linter
 
 * using the VSCode plugin `TSLint` (*recommended*), or
-* via npm
-  * Globally: `npm i tslint -g`
-  * Locally: `npm i typescript -D`
+* via NPM
+  * Globally: `npm install --global tslint`
+  * Locally: `npm install --save-dev typescript`
 
 #### Automate the compilation of TypeScript
 
@@ -111,7 +111,7 @@ You should now have the following file structure:
 dashTS_example
 |-- dist
 |-- node_modules
-|   |-- *all the node modules*
+|   |-- (all the node modules)
 |-- app.ts
 |-- package-lock.json
 |-- package.json
