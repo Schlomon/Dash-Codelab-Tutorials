@@ -1,0 +1,182 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>How to use DashJS with TypeScript in VSCode</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="Using-DashJS-with-TypeScript-in-VSCode"
+                  title="How to use DashJS with TypeScript in VSCode"
+                  environment="web"
+                  feedback-link="https://github.com/Schlomon/DashJS-TS-Tutorial/issues">
+    
+      <google-codelab-step label="Overview" duration="1">
+        <h2 class="checklist" is-upgraded>What You&#39;ll learn</h2>
+<ul class="checklist">
+<li>How to set up a project which is able to interact with the Dash network</li>
+<li>How to create and manage a Wallet (e.g. check a balance, send Dash, etc)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="NPM setup" duration="2">
+        <p>Create a new project folder:</p>
+<pre><code>mkdir dashTS_example
+cd dashTS_example
+</code></pre>
+<p>You can open it in VSCode now:</p>
+<pre><code>code .
+</code></pre>
+<p>In VSCode, open the terminal with <code>Ctrl</code> + `<br><em>(Alternatively you can use the &#34;normal&#34; terminal from the previous steps)</em></p>
+<p>Then initialize the NPM project:</p>
+<pre><code>npm init
+</code></pre>
+<p>And install DashJS:</p>
+<ul>
+<li>Globally: <code>npm install --global dash</code>, or</li>
+<li>Locally: <code>npm install --save-dev dash</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="TypeScript setup" duration="2">
+        <p>If TypeScript is not installed already, install it:</p>
+<ul>
+<li>Globally: <code>npm install --global typescript</code>, or</li>
+<li>Locally (for this project only): <code>npm install --save-dev typescript</code></li>
+</ul>
+<p>Also create an output folder for later:</p>
+<pre><code>mkdir dist
+</code></pre>
+<p>Then run the following to complete the setup:</p>
+<pre><code>npx tsc --init
+</code></pre>
+<p>You can also create a file called <code>app.ts</code> for later use.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Optional setup" duration="0">
+        <h3 is-upgraded>Install a linter</h3>
+<ul>
+<li>using the VSCode plugin <code>TSLint</code> (<em>recommended</em>), or</li>
+<li>via NPM<br><br><ul>
+<li>Globally: <code>npm install --global tslint</code></li>
+<li>Locally: <code>npm install --save-dev typescript</code></li>
+</ul>
+</li>
+</ul>
+<h3 is-upgraded>Automate the compilation of TypeScript</h3>
+<ol type="1">
+<li>Open the file <code>tsconfig.json</code> in VSCode</li>
+<li>Uncomment the line beginning with <code>&#34;outDir&#34;</code></li>
+<li>Replace <code>&#34;./&#34;</code> with <code>&#34;./dist&#34;</code>, then save and close the file.</li>
+<li>Open the file <code>package.json</code> in VSCode</li>
+<li>Insert <code>&#34;start&#34;: &#34;tsc &amp;&amp; node dist/app.js&#34;,</code><strong>before</strong> the line beginning with <code>&#34;test&#34;</code>.</li>
+<li>Save and close the file.</li>
+</ol>
+<p>Now You can simply type <code>npm start</code> and it will automatically compile and run your code from <code>app.ts</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Check if setup completed correctly" duration="1">
+        <p>You should now have the following file structure:</p>
+<pre><code>dashTS_example
+|-- dist
+|-- node_modules
+|   |-- (all the node modules)
+|-- app.ts
+|-- package-lock.json
+|-- package.json
+|-- tsconfig.json
+</code></pre>
+<p>To test the setup place <code>console.log(&#34;hello&#34;)</code> inside <code>app.ts</code>.<br>Then in the console type <code>npm start</code><br>If everything worked you should get an output similar to:</p>
+<pre><code>&gt; dashts_example@1.0.0 start /dashTS_example
+&gt; tsc &amp;&amp; node dist/app.js
+
+hello
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Sample Code: Creating a new Wallet" duration="4">
+        <p>You can write all of the following example code into <code>app.ts</code>.</p>
+<p>First, import the Dash SDK:</p>
+<pre><code>import * as Dash from &#34;dash&#34;;
+</code></pre>
+<p>Then we need a new client. It&#39;s pretty simple to create one, but we need to do it a lot, which means it&#39;s best practice to put it into a function:</p>
+<pre><code>const initClient = (mnemonic = null) =&gt; {
+  return new Dash.Client({
+    network: &#34;testnet&#34;, // As long as this line is kept, all operations will only be on the testnet
+    wallet: { mnemonic } // If mnemonic is null, Wallet-lib will create new mnemonic
+  });
+};
+</code></pre>
+<p>Now, in order to create a wallet and retrieve some useful data from it, You simply do:</p>
+<pre><code>// get and print mnemonic, unused adresse, etc. here
+</code></pre>
+<p>Hint: To autofromat your TS code you can use one of the following shortcuts:</p>
+<ul>
+<li>Windows: <code>Shift</code> + <code>Alt</code> + <code>F</code></li>
+<li>Mac: <code>Shift</code> + <code>Option</code> + <code>F</code></li>
+<li>Linux: <code>Ctrl</code> + <code>Shift</code> + <code>I</code> or <code>Shift</code> + <code>Alt</code> + <code>I</code></li>
+</ul>
+<p>If non of the above work, you can also try:<br><code>Ctrl</code> + <code>K</code> and then <code>Ctrl</code> + <code>F</code></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Sample Code: Reading the account balance" duration="3">
+        <p>Reading the account balance is really easy too:</p>
+<pre><code>const client = initClient(mnemonic);  // calling the method from before
+// read and print account balance here, preferably in a function cuz of the next two steps
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Sample Code: Requesting some tDash" duration="3">
+        <p>Before we can spent some Dash we need to have some. In the testnet you can request some tDash (test Dash):</p>
+<pre><code>// request tDash, probably print account balance again
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Sample Code: Sending Dash" duration="2">
+        <pre><code>// send Dash, probably print account balance again
+</code></pre>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+
+</body>
+</html>
