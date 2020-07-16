@@ -121,7 +121,7 @@ To test the setup place `console.log("hello")` inside `app.ts`.
 Then in the console type `npm start`
 If everything worked you should get an output similar to:
 ```
-> dashts_example@1.0.0 start DASH/dashTS_example
+> dashts_example@1.0.0 start /dashTS_example
 > tsc && node dist/app.js
 
 hello
