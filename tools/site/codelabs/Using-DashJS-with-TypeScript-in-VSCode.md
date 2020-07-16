@@ -125,11 +125,7 @@ Then in the console type `npm start`
 If everything worked you should get an output similar to:
 
 ```text
-<<<<<<< HEAD:DashJSInTypeScriptTut/Using-DashJS-with-TypeScript-in-VSCode.md
-> dashts_example@1.0.0 start DASH/dashTS_example
-=======
 > dashts_example@1.0.0 start /dashTS_example
->>>>>>> upstream/master:tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md
 > tsc && node dist/app.js
 
 hello
@@ -165,9 +161,8 @@ Now, in order to create a wallet and retrieve some useful data from it, You simp
 // get and print mnemonic, unused adresse, etc. here
 ```
 
-<<<<<<< HEAD:DashJSInTypeScriptTut/Using-DashJS-with-TypeScript-in-VSCode.md
-=======
 Hint: To autofromat your TS code you can use one of the following shortcuts:
+
 * Windows: `Shift` + `Alt` + `F`
 * Mac: `Shift` + `Option` + `F`
 * Linux: `Ctrl` + `Shift` + `I` or `Shift` + `Alt` + `I`
@@ -175,8 +170,6 @@ Hint: To autofromat your TS code you can use one of the following shortcuts:
 If non of the above work, you can also try:
 `Ctrl` + `K` and then `Ctrl` + `F`
 
-
->>>>>>> upstream/master:tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md
 <!-- ------------------------ -->
 ## Sample Code: Reading the account balance
 
