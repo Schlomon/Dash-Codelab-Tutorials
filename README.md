@@ -1,9 +1,9 @@
-# Hosted Example
+# DashJS Typsscript Codelab Tutorial
 
-Live example can be found at <https://dashjsintypescript.000webhostapp.com>
+This repo contains tools for creating and hosting a Codelab tutorial for how to use DashJS with Typescript.  The tutorial source code is a markdown file called [`Using-DashJS-with-TypeScript-in-VSCode.md`](tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md)
 
-# Host yourself
-Running codelabs locally is explained in [tools](tools)
+## Hosting
 
-### Direct links to markdown tutorial files
-* [Using DashJS with TS in VSCode](tools/site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md)
+The live site (including tutorial) is hosted at <https://dashjsintypescript.000webhostapp.com>.
+
+If you are a developer and wish to run codelabs on your own localhost for testing see [tools](tools).

@@ -51,9 +51,7 @@ npm init
 
 And install DashJS:
 
-`npm install --save-dev dash`
-
-You can also install dash and all the following npm packages globally, by replacing the option `--save-dev` with `--global`.
+`npm install dash`
 
 <!-- ------------------------ -->
 ## TypeScript setup
@@ -63,6 +61,8 @@ Duration: 2
 If TypeScript is not installed already, install it:
 
 `npm install --save-dev typescript`
+
+*Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
 Also create an output folder for later:
 
@@ -88,6 +88,8 @@ There are a few options for additional setup. You can:
 
 * using the VSCode plugin `TSLint` (*recommended*), or
 * via NPM: `npm install --save-dev typescript`
+
+*Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
 ### Automate the compilation of TypeScript
 
