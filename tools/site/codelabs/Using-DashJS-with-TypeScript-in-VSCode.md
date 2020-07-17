@@ -51,8 +51,9 @@ npm init
 
 And install DashJS:
 
-* Globally: `npm install --global dash`, or
-* Locally: `npm install --save-dev dash`
+`npm install --save-dev dash`
+
+You can also install dash and all the following npm packages globally, by replacing the option `--save-dev` with `--global`.
 
 <!-- ------------------------ -->
 ## TypeScript setup
@@ -61,8 +62,7 @@ Duration: 2
 
 If TypeScript is not installed already, install it:
 
-* Globally: `npm install --global typescript`, or
-* Locally (for this project only): `npm install --save-dev typescript`
+`npm install --save-dev typescript`
 
 Also create an output folder for later:
 
@@ -87,9 +87,7 @@ There are a few options for additional setup. You can:
 ### Install a linter
 
 * using the VSCode plugin `TSLint` (*recommended*), or
-* via NPM
-  * Globally: `npm install --global tslint`
-  * Locally: `npm install --save-dev typescript`
+* via NPM: `npm install --save-dev typescript`
 
 ### Automate the compilation of TypeScript
 
