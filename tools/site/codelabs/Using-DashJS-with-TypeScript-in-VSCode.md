@@ -40,7 +40,7 @@ You can open it in VSCode now:
 code .
 ```
 
-In VSCode, open the terminal with `Ctrl` + `
+In VSCode, open the terminal with `Ctrl` + `` ` ``
 *(Alternatively you can use the "normal" terminal from the previous steps)*
 
 Then initialize the NPM project:
