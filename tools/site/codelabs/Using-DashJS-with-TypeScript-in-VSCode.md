@@ -84,14 +84,14 @@ You can also create a file called `app.ts` for later use.
 Duration: 3
 There are a few options for additional setup. You can:
 
-#### Install a linter
+### Install a linter
 
 * using the VSCode plugin `TSLint` (*recommended*), or
 * via NPM
   * Globally: `npm install --global tslint`
   * Locally: `npm install --save-dev typescript`
 
-#### Automate the compilation of TypeScript
+### Automate the compilation of TypeScript
 
 1. Open the file `tsconfig.json` in VSCode
 2. Uncomment the line beginning with `"outDir"`
