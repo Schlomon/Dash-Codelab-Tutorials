@@ -17,7 +17,7 @@ feedback link: https://github.com/Schlomon/DashJS-TS-Tutorial/issues
 
 Duration: 1
 
-### What You'll learn
+### What you'll learn
 
 * How to set up a project which is able to interact with the Dash network
 * How to create and manage a Wallet (e.g. check a balance, send Dash, etc)
@@ -51,9 +51,7 @@ npm init
 
 And install DashJS:
 
-`npm install --save-dev dash`
-
-You can also install dash and all the following npm packages globally, by replacing the option `--save-dev` with `--global`.
+`npm install dash`
 
 <!-- ------------------------ -->
 ## TypeScript setup
@@ -63,6 +61,8 @@ Duration: 2
 If TypeScript is not installed already, install it:
 
 `npm install --save-dev typescript`
+
+*Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
 Also create an output folder for later:
 
@@ -88,6 +88,8 @@ There are a few options for additional setup. You can:
 
 * using the VSCode plugin `TSLint` (*recommended*), or
 * via NPM: `npm install --save-dev typescript`
+
+*Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
 ### Automate the compilation of TypeScript
 
@@ -130,72 +132,123 @@ hello
 ```
 
 <!-- ------------------------ -->
-## Sample Code: Creating a new Wallet
+## Sample code: basic template
 
 Duration: 4
 
-You can write all of the following example code into `app.ts`.
-
-First, import the Dash SDK:
+Copy the following example code into `app.ts`.  This is a basic template that we'll add to later:
 
 ```typescript
+// import the Dash SDK:
 import * as Dash from "dash";
-```
 
-Then we need a new client. It's pretty simple to create one, but we need to do it a lot, which means it's best practice to put it into a function:
-
-```typescript
+// create a helper function to initializae a client
 const initClient = (mnemonic = null) => {
   return new Dash.Client({
-    network: "testnet", // As long as this line is kept, all operations will only be on the testnet
-    wallet: { mnemonic } // If mnemonic is null, Wallet-lib will create new mnemonic
+    network: "testnet", // all operations will only be on the testnet
+    wallet: { mnemonic } // if mnemonic is null one will be created
   });
 };
+
+// declare a main function with business logic
+const main = async () => {
+  const client = await initClient()
+  return "client initialzed sucessfully"
+  // we'll add more here in later steps
+}
+
+// call the main function, recieve a value on success or error on failure
+main()
+  .then(val => console.log("Success :) \n", val, "\n"))
+  .catch(err => console.log("Fail :( \n", err, "\n"))
+  .finally(() => process.exit());
 ```
 
-Now, in order to create a wallet and retrieve some useful data from it, You simply do:
-
-```typescript
-// get and print mnemonic, unused adresse, etc. here
-```
-
-Hint: To autofromat your TS code you can use one of the following shortcuts:
+*Hint: To autofromat your TS code you can use one of the following shortcuts:*
 
 * Windows: `Shift` + `Alt` + `F`
 * Mac: `Shift` + `Option` + `F`
 * Linux: `Ctrl` + `Shift` + `I` or `Shift` + `Alt` + `I`
 
-If non of the above work, you can also try:
+If none of the above work, you can also try:
 `Ctrl` + `K` and then `Ctrl` + `F`
 
+Save the file, then run `tsc && node dist/app.js` or `npm start`.
+
 <!-- ------------------------ -->
-## Sample Code: Reading the account balance
+## Sample code: read account and network data
 
 Duration: 3
 
-Reading the account balance is really easy too:
+Now, let's get a mnemonic, an unused address, and some network data, Update `main()` as follows:
 
 ```typescript
-const client = initClient(mnemonic);  // calling the method from before
-// read and print account balance here, preferably in a function cuz of the next two steps
+const main = async () => {
+  const client = await initClient()
+  const mnemonic = client.wallet.exportWallet();
+  const account = await client.getWalletAccount();
+  const unusedAddress = account.getUnusedAddress().address;
+  const bestBlockHash = await client.getDAPIClient().getBestBlockHash();
+  return { mnemonic, unusedAddress, bestBlockHash };
+};
+
 ```
 
+Make note of the `mnemonic` and `unusedAddress` from the console for the next step.
+
 <!-- ------------------------ -->
-## Sample Code: Requesting some tDash
+## Sample code: request eDASH and check balance
 
 Duration: 3
 
-Before we can spent some Dash we need to have some. In the testnet you can request some tDash (test Dash):
+Before we can send eDash (Dash from "evonet" testnet) we need to have some. Request eDash from the [faucet Dash Core Group (DCG) runs](http://faucet.evonet.networks.dash.org/)
+
+Then confirm that you have a balance on [DCG's block explorer](http://insight.evonet.networks.dash.org:3001/insight/)
+
+You can also check the balance using DashJS.  Update `main()` as follows:
 
 ```typescript
-// request tDash, probably print account balance again
+const main = async () => {
+  const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
+  const account = await client.getWalletAccount();
+  const accountBalance = {
+    unconfirmed: account.getUnconfirmedBalance(false),
+    confirmed: account.getConfirmedBalance(false),
+    total: account.getTotalBalance(false)
+  };
+  return { accountBalance };
+};
 ```
 
 <!-- ------------------------ -->
-## Sample Code: Sending Dash
+## Sample code: Send eDASH
 
 Duration: 2
 
+Now that you have a balance you can send some from one address to another.  Let's send 1 eDASH back to the wallet.  Update `main()` as follows:
+
 ```typescript
-// send Dash, probably print account balance again
+const main = async () => {
+  const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
+  const account = await client.getWalletAccount();
+
+  // create the transaction (this doesn't broadcast it)
+  const transation = account.createTransaction({
+    recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
+    satoshis: amountInDash * 100000000 // 1 eDASH
+  });
+
+  // broadcast the transaction
+  const txid = await account.broadcastTransaction(transaction);
+  return txid;
+};
 ```
+
+Now you can check the balance as shown in the previous step.
+
+<!-- ------------------------ -->
+## Congratulations, now play around
+
+Duration: 0
+
+If you were typing along you should have noticed that Typescript shows you autocompletion results for available properties and methods on classes and instnaces (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
