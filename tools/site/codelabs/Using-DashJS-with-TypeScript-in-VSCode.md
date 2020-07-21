@@ -142,7 +142,7 @@ Copy the following example code into `app.ts`.  This is a basic template that we
 // import the Dash SDK:
 import * as Dash from "dash";
 
-// create a helper function to initializae a client
+// create a helper function to initialize a client
 const initClient = (mnemonic = null) => {
   return new Dash.Client({
     network: "testnet", // all operations will only be on the testnet
@@ -153,18 +153,18 @@ const initClient = (mnemonic = null) => {
 // declare a main function with business logic
 const main = async () => {
   const client = await initClient()
-  return "client initialzed sucessfully"
+  return "client initialized successfully"
   // we'll add more here in later steps
 }
 
-// call the main function, recieve a value on success or error on failure
+// call the main function, receive a value on success or error on failure
 main()
   .then(val => console.log("Success :) \n", val, "\n"))
   .catch(err => console.log("Fail :( \n", err, "\n"))
   .finally(() => process.exit());
 ```
 
-*Hint: To autofromat your TS code you can use one of the following shortcuts:*
+*Hint: To autoformat your TS code you can use one of the following shortcuts:*
 
 * Windows: `Shift` + `Alt` + `F`
 * Mac: `Shift` + `Option` + `F`
@@ -233,7 +233,7 @@ const main = async () => {
   const account = await client.getWalletAccount();
 
   // create the transaction (this doesn't broadcast it)
-  const transation = account.createTransaction({
+  const transaction = account.createTransaction({
     recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
     satoshis: amountInDash * 100000000 // 1 eDASH
   });
@@ -251,4 +251,4 @@ Now you can check the balance as shown in the previous step.
 
 Duration: 0
 
-If you were typing along you should have noticed that Typescript shows you autocompletion results for available properties and methods on classes and instnaces (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
+If you were typing along you should have noticed that Typescript shows you autocompletion results for available properties and methods on classes and instances (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
