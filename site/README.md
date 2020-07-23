@@ -20,7 +20,7 @@ To quickly host the codelabs in this repository follow these steps:
 2. Rebuild the site and host codelab:
 
     ```sh
-    cd codelabs/ && claat export Using-DashJS-with-TypeScript-in-VSCode.md && cd .. && gulp serve --codelabs-dir=codelabs
+    cd codelabs/ && claat export *.md && cd .. && gulp serve --codelabs-dir=codelabs
     ```
 
 Gulp can be replaced by any other webserver, as long as it serves the contents of the [build](build/) directory.
