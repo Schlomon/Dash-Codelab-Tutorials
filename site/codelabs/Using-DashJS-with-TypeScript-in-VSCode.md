@@ -5,7 +5,7 @@ categories: Typescript
 tags: medium
 status: Published
 authors: Rion, Schlomon
-feedback link: https://github.com/Schlomon/DashJS-TS-Tutorial/issues
+feedback link: https://github.com/Schlomon/Dash-Codelab-Tutorials/issues
 
 ---
 
