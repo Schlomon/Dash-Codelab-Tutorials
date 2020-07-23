@@ -27,56 +27,38 @@ Duration: 1
 
 Duration: 2
 
-Create a new project folder:
+Create a new project folder and open it in VSCode:
 
 ```sh
 mkdir dashTS_example
 cd dashTS_example
-```
-
-You can open it in VSCode now:
-
-```sh
 code .
 ```
 
 In VSCode, open the terminal with `Ctrl` + `` ` ``
 *(Alternatively you can use the "normal" terminal from the previous steps)*
 
-Then initialize the NPM project:
+Then initialize the NPM project and install DashJS:
 
 ```sh
 npm init
+npm install dash
 ```
-
-And install DashJS:
-
-`npm install dash`
 
 <!-- ------------------------ -->
 ## TypeScript setup
 
 Duration: 2
 
-If TypeScript is not installed already, install it:
-
-`npm install --save-dev typescript`
+If TypeScript is not installed already, install it with`npm install --save-dev typescript`
 
 *Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
-Also create an output folder for later:
+Also create an output folder for later: `mkdir dist`
 
-```sh
-mkdir dist
-```
+Then run the following to complete the setup: `npx tsc --init`
 
-Then run the following to complete the setup:
-
-```sh
-npx tsc --init
-```
-
-You can also create a file called `app.ts` for later use.
+You can also create a file called `app.ts` for later use: `touch app.ts`
 
 <!-- ------------------------ -->
 ## Optional setup
@@ -173,7 +155,7 @@ main()
 If none of the above work, you can also try:
 `Ctrl` + `K` and then `Ctrl` + `F`
 
-Save the file, then run `tsc && node dist/app.js` or `npm start`.
+Save the file, then run `npm start` or `tsc && node dist/app.js`.
 
 <!-- ------------------------ -->
 ## Sample code: read account and network data
