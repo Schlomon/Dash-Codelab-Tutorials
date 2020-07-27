@@ -7,6 +7,7 @@ This repo contains Codelab tutorials related to [Dash](https://www.dash.org/) an
 The source code for the tutorials can be found in their corresponding markdown files in the [site/codelabs/](site/codelabs/) directory:
 
 * [Using-DashJS-with-TypeScript-in-VSCode.md](site/codelabs/Using-DashJS-with-TypeScript-in-VSCode.md)
+* [Using-DashJS-with-JavaScript-in-VSCode.md](site/codelabs/Using-DashJS-with-JavaScript-in-VSCode.md)
 
 ## Hosting
 
