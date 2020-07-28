@@ -125,7 +125,7 @@ Copy the following example code into `app.ts`.  This is a basic template that we
 import * as Dash from "dash";
 
 // create a helper function to initialize a client
-const initClient = (mnemonic = null) => {
+const initClient = (mnemonic: string | null = null) => {
   return new Dash.Client({
     network: "evonet", // all operations will only be on the test network
     wallet: { mnemonic } // if mnemonic is null one will be created
