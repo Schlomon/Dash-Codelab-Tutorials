@@ -168,7 +168,14 @@ createWallet();
 
 Save the file, then run `npm start` or `node src/index.js`.
 Sample output:
-![create wallet, sample output](assets/JS-Create-Wallet_Sample-Output.png)
+
+```text
+> jstest@1.0.0 start ~/dashJS_example
+> node src/index.js
+
+Mnemonic: avocado large rather uphold wife stereo glide knee relax bar neck pupil
+Unused address: yX3ohM9u8q4PXmv2QVmghXrpx8npKSMvAU
+```
 
 *Hint: To auto format your JS code you can use one of the following shortcuts:*
 
@@ -224,8 +231,16 @@ async function checkAccoutBalance() {
 checkAccoutBalance();
 ```
 
-Run again with `npm start`. The output should be similar to:
-![get balance, sample output](assets/JS-Get-Balance_Sample-Output.png)
+Comment out the last line from the previous step `// createWallet();`.
+
+Then run the script again with `npm start`. The output should be similar to:
+
+```text
+> jstest@1.0.0 start ~/dashJS_example
+> node src/index.js
+
+{ confirmed: 37.5931, unconfirmed: 0, total: 37.5931 }
+```
 
 <!-- ------------------------ -->
 ## Sample code: Send eDASH
