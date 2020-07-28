@@ -123,15 +123,14 @@ Here is how:
 // import dash
 const Dash = require("dash");
 
-// client options
+// define client options
 const clientOpts = {
- network: "testnet",  // as long as we set network to 'testnet' all operations
-                       // performed with the client are only executed on evonet
-                       // with eDash. eDash has no value
-                       // as it is the testnetwork
+ network: "testnet",  // as long as network is set to 'testnet', all operations
+                      // performed with the client are only executed on evonet
+                      // with eDash. eDash has no value.
   wallet: {
-    mnemonic: null,  // this line tells the network
-                       // that we want to create a new wallet
+    mnemonic: null,   // this line tells the network
+                      // that we want to create a new wallet
   }
 };
 
@@ -145,17 +144,18 @@ async function createWallet() {
     const account = await client.wallet.getAccount();
     await account.isReady();
 
-    // and read the new mnemonics from it
+    // read the mnemonic from the client
     const mnemonic = client.wallet.exportWallet();
     console.log('Mnemonic:', mnemonic);
 
-    // also read out an unused address
+    // and get an unused address from the account
     const address = account.getUnusedAddress();
     console.log('Unused address:', address.address);
 
   } catch (e) {
     console.error("Something went wrong:", e);
   } finally {
+    // always make sure to disconnect the client
     client.disconnect();
   }
 }
@@ -170,7 +170,7 @@ Save the file, then run `npm start` or `node src/index.js`.
 Sample output:
 
 ```text
-> jstest@1.0.0 start ~/dashJS_example
+> dashjs_example@1.0.0 start ~/dashJS_example
 > node src/index.js
 
 Mnemonic: avocado large rather uphold wife stereo glide knee relax bar neck pupil
@@ -196,21 +196,23 @@ Duration: 3
 Before we can send eDash we need to have some. Request eDash from the [Dash Faucet](http://faucet.evonet.networks.dash.org/).
 Just paste the unused address from the previous step in the textbox and hit `Get coins`.
 
+![get coins](assets/JS-Get-Coins_Sample.png)
+
 Now, let's check the balance of the wallet:
 
 ```javascript
-const Dash = require("dash");
-
+// replace the clientOpts from before with these:
 const clientOpts = {
   network: "testnet",
   wallet: {
     mnemonic:
     // this time, we need to specify the mnemonic, replace with yours instead
-      "avocado large rather uphold wife stereo glide knee bar relax neck pupil",
+      "avocado large rather uphold wife stereo glide knee relax bar neck pupil",
   },
 };
 
-async function checkAccoutBalance() {
+// add a new function
+async function checkAccountBalance() {
   const account = await client.wallet.getAccount();
   await account.isReady();
 
@@ -228,7 +230,7 @@ async function checkAccoutBalance() {
   }
 }
 
-checkAccoutBalance();
+checkAccountBalance();
 ```
 
 Comment out the last line from the previous step `// createWallet();`.
@@ -250,6 +252,7 @@ Duration: 2
 Now that you have a balance you can send some from one address to another.  Let's send 1 eDASH back to the wallet.  Update `main()` as follows:
 
 ```javascript
+// add a new function
 async function sendFunds() {
   const account = await client.wallet.getAccount();
   await account.isReady();
@@ -274,13 +277,37 @@ async function sendFunds() {
 sendFunds();
 ```
 
+Again, comment out the last line from the previous step `checkAccountBalance();`
+and run with `npm start`.
+
+The output should be similar to:
+
+```text
+> dashjs_example@1.0.0 start ~/dashJS_example
+> node src/index.js
+
+Transaction broadcast!
+Transaction ID: 8699ef50e08b6c3a318beaf85928e66bdbf67857a0c560050a3655e68f265c18
+```
+
 You can now check the account balance again like in the previous step, to confirm that 1 Dash has been sent.
 
 <!-- ------------------------ -->
 ## Congratulations, now play around
 
-Duration: 0
+Duration: 1
 
 If you were typing along you should have noticed that Typescript shows you autocompletion results for available properties and methods on classes and instances (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
 
 For more examples see <https://dashplatform.readme.io/docs/tutorial-connecting-to-evonet> and <https://dashevo.github.io/DashJS/#/>.
+
+<!-- ------------------------ -->
+## index.js
+
+Duration: 0
+
+Here is the full `index.js` file:
+
+```javascript
+
+```
