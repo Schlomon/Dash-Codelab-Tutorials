@@ -167,7 +167,7 @@ Now, let's get a mnemonic, an unused address, and some network data, Update `mai
 ```typescript
 const main = async () => {
   const client = await initClient()
-  const mnemonic = client.wallet.exportWallet();
+  const mnemonic = client?.wallet?.exportWallet();
   const account = await client.getWalletAccount();
   const unusedAddress = account.getUnusedAddress().address;
   const bestBlockHash = await client.getDAPIClient().getBestBlockHash();
