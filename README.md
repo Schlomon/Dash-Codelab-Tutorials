@@ -12,4 +12,4 @@ The source code for the tutorials can be found in their corresponding markdown f
 
 If you are a developer and wish to run codelabs on your own localhost for testing see [site/](site/).
 
-A demo site for the DashJS with TS tutorial is temporarily hosted at <https://dashjsintypescript.000webhostapp.com>.
+A demo site for the DashJS with TS tutorial is temporarily hosted at <https://dashcodelabstests.000webhostapp.com/>.
