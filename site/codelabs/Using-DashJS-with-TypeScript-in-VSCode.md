@@ -127,7 +127,7 @@ import * as Dash from "dash";
 // create a helper function to initialize a client
 const initClient = (mnemonic = null) => {
   return new Dash.Client({
-    network: "testnet", // all operations will only be on the testnet
+    network: "evonet", // all operations will only be on the test network
     wallet: { mnemonic } // if mnemonic is null one will be created
   });
 };
