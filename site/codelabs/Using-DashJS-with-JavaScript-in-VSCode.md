@@ -1,7 +1,7 @@
 ---
 summary: Using DashJS with JavaScript in VSCode
 id: Using-DashJS-with-JavaScript-in-VSCode
-categories: JavaScript
+categories: javascript
 tags: medium
 status: Published
 authors: Rion, Schlomon
