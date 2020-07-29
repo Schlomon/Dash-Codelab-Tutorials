@@ -211,10 +211,12 @@ Now that you have a balance you can send some from one address to another.  Let'
 
 ```typescript
 const main = async () => {
-  const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
+  const client = await initClient('replace this string with your twelve word mnemonic string from previous step');
+
   const account = await client.getWalletAccount();
 
   // create the transaction (this doesn't broadcast it)
+  const amountInDash = 1;
   const transaction = account.createTransaction({
     recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
     satoshis: amountInDash * 100000000 // 1 eDASH
