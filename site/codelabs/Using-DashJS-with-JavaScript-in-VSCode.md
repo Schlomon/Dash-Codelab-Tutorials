@@ -261,7 +261,7 @@ async function sendFunds() {
     // create a transaction, everything we need is the recipient and the amount in satoshis
     const transaction = account.createTransaction({
       recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
-      satoshis: 100000000, // 100000000 satoshis = 1 Dash
+      satoshis: 1 * 100000000, // 100000000 satoshis = 1 Dash
     });
 
     // broadcast the transaction and get the transaction id
@@ -297,16 +297,17 @@ You can now check the account balance again like in the previous step, to confir
 
 Duration: 1
 
-If you were typing along you should have noticed that Typescript shows you autocompletion results for available properties and methods on classes and instances (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
+If you were typing along you should have noticed that VSCode shows you autocompletion results for available properties and methods on classes and instances (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
 
-For more examples see <https://dashplatform.readme.io/docs/tutorial-connecting-to-evonet> and <https://dashevo.github.io/DashJS/#/>.
+The full DashJS documentation can be found under <https://dashevo.github.io/DashJS/#/>.
+For more code examples on e.g. Identities, Usernames, Datacontracts, etc. please visit <https://dashplatform.readme.io/docs/tutorial-connecting-to-evonet>.
 
 <!-- ------------------------ -->
 ## index.js
 
 Duration: 0
 
-Here is the full `index.js` file:
+For reference, here is the full `index.js` file how it should look like after you have followed this tutorial:
 
 ```javascript
 
