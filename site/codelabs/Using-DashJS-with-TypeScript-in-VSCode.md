@@ -173,7 +173,6 @@ const main = async () => {
   const bestBlockHash = await (client.getDAPIClient() as any).core.getBestBlockHash();
   return { mnemonic, unusedAddress, bestBlockHash };
 };
-
 ```
 
 Make note of the `mnemonic` and `unusedAddress` from the console for the next step.
@@ -193,6 +192,7 @@ You can also check the balance using DashJS.  Update `main()` as follows:
 const main = async () => {
   const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
   const account = await client.getWalletAccount();
+
   const accountBalance = {
     unconfirmed: account.getUnconfirmedBalance(false),
     confirmed: account.getConfirmedBalance(false),
@@ -212,20 +212,21 @@ Now that you have a balance you can send some from one address to another.  Let'
 ```typescript
 const main = async () => {
   const client = await initClient('replace this string with your twelve word mnemonic string from previous step');
-
   const account = await client.getWalletAccount();
 
   // create the transaction (this doesn't broadcast it)
   const amountInDash = 1;
-  const transaction = account.createTransaction({
+  const transactionOpts: any = {
     recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
-    satoshis: amountInDash * 100000000 // 1 eDASH
-  });
+    satoshis: amountInDash * 100000000 // 100000000 satoshis = 1 DASH
+  };
+  const transaction = account.createTransaction(transactionOpts);
 
   // broadcast the transaction
   const txid = await account.broadcastTransaction(transaction);
   return txid;
 };
+
 ```
 
 Now you can check the balance as shown in the previous step.
