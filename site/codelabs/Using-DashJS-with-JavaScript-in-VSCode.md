@@ -48,6 +48,8 @@ Then initialize the NPM project:
 npm init
 ```
 
+If prompted, hit `Enter` a couple of times.
+
 Create a `.js` file for later use:
 
 ```sh
@@ -57,7 +59,9 @@ touch src/index.js
 
 And install DashJS:
 
-`npm install dash`
+```sh
+npm install dash
+```
 
 <!-- ------------------------ -->
 ## Optional setup
@@ -125,7 +129,7 @@ const Dash = require("dash");
 
 // define client options
 const clientOpts = {
- network: "testnet",  // as long as network is set to 'testnet', all operations
+ network: "evonet",  // as long as network is set to 'evonet', all operations
                       // performed with the client are only executed on evonet
                       // with eDash. eDash has no value.
   wallet: {
@@ -203,7 +207,7 @@ Now, let's check the balance of the wallet:
 ```javascript
 // replace the clientOpts from before with these:
 const clientOpts = {
-  network: "testnet",
+  network: "evonet",
   wallet: {
     mnemonic:
     // this time, we need to specify the mnemonic, replace with yours instead
