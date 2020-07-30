@@ -27,56 +27,38 @@ Duration: 1
 
 Duration: 2
 
-Create a new project folder:
+Create a new project folder and open it in VSCode:
 
 ```sh
 mkdir dashTS_example
 cd dashTS_example
-```
-
-You can open it in VSCode now:
-
-```sh
 code .
 ```
 
 In VSCode, open the terminal with `Ctrl` + `` ` ``
 *(Alternatively you can use the "normal" terminal from the previous steps)*
 
-Then initialize the NPM project:
+Then initialize the NPM project and install DashJS:
 
 ```sh
 npm init
+npm install dash
 ```
-
-And install DashJS:
-
-`npm install dash`
 
 <!-- ------------------------ -->
 ## TypeScript setup
 
 Duration: 2
 
-If TypeScript is not installed already, install it:
-
-`npm install --save-dev typescript`
+If TypeScript is not installed already, install it with`npm install --save-dev typescript`
 
 *Alternatively, you can install globally by replacing `--save-dev` with `--global`*.
 
-Also create an output folder for later:
+Also create an output folder for later: `mkdir dist`
 
-```sh
-mkdir dist
-```
+Then run the following to complete the setup: `npx tsc --init`
 
-Then run the following to complete the setup:
-
-```sh
-npx tsc --init
-```
-
-You can also create a file called `app.ts` for later use.
+You can also create a file called `app.ts` for later use: `touch app.ts`
 
 <!-- ------------------------ -->
 ## Optional setup
@@ -143,9 +125,9 @@ Copy the following example code into `app.ts`.  This is a basic template that we
 import * as Dash from "dash";
 
 // create a helper function to initialize a client
-const initClient = (mnemonic = null) => {
+const initClient = (mnemonic: string | null = null) => {
   return new Dash.Client({
-    network: "testnet", // all operations will only be on the testnet
+    network: "evonet", // all operations will only be on the test network
     wallet: { mnemonic } // if mnemonic is null one will be created
   });
 };
@@ -173,7 +155,7 @@ main()
 If none of the above work, you can also try:
 `Ctrl` + `K` and then `Ctrl` + `F`
 
-Save the file, then run `tsc && node dist/app.js` or `npm start`.
+Save the file, then run `npm start` or `tsc && node dist/app.js`.
 
 <!-- ------------------------ -->
 ## Sample code: read account and network data
@@ -185,13 +167,12 @@ Now, let's get a mnemonic, an unused address, and some network data, Update `mai
 ```typescript
 const main = async () => {
   const client = await initClient()
-  const mnemonic = client.wallet.exportWallet();
+  const mnemonic = client?.wallet?.exportWallet();
   const account = await client.getWalletAccount();
   const unusedAddress = account.getUnusedAddress().address;
-  const bestBlockHash = await client.getDAPIClient().getBestBlockHash();
+  const bestBlockHash = await (client.getDAPIClient() as any).core.getBestBlockHash();
   return { mnemonic, unusedAddress, bestBlockHash };
 };
-
 ```
 
 Make note of the `mnemonic` and `unusedAddress` from the console for the next step.
@@ -211,6 +192,7 @@ You can also check the balance using DashJS.  Update `main()` as follows:
 const main = async () => {
   const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
   const account = await client.getWalletAccount();
+
   const accountBalance = {
     unconfirmed: account.getUnconfirmedBalance(false),
     confirmed: account.getConfirmedBalance(false),
@@ -229,19 +211,22 @@ Now that you have a balance you can send some from one address to another.  Let'
 
 ```typescript
 const main = async () => {
-  const client = await initClient('replace this string with your twelve word mnemonic string from previous step')
+  const client = await initClient('replace this string with your twelve word mnemonic string from previous step');
   const account = await client.getWalletAccount();
 
   // create the transaction (this doesn't broadcast it)
-  const transaction = account.createTransaction({
+  const amountInDash = 1;
+  const transactionOpts: any = {
     recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
-    satoshis: amountInDash * 100000000 // 1 eDASH
-  });
+    satoshis: amountInDash * 100000000 // 100000000 satoshis = 1 DASH
+  };
+  const transaction = account.createTransaction(transactionOpts);
 
   // broadcast the transaction
   const txid = await account.broadcastTransaction(transaction);
   return txid;
 };
+
 ```
 
 Now you can check the balance as shown in the previous step.
