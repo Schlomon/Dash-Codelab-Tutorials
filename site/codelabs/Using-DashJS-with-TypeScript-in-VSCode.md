@@ -170,8 +170,8 @@ const main = async () => {
   const mnemonic = client?.wallet?.exportWallet();
   const account = await client.getWalletAccount();
   const unusedAddress = account.getUnusedAddress().address;
-//  const bestBlockHash = await client.getDAPIClient().getBestBlockHash();
-  return { mnemonic, unusedAddress/*, bestBlockHash */};
+  const bestBlockHash = await (client.getDAPIClient() as any).core.getBestBlockHash();
+  return { mnemonic, unusedAddress, bestBlockHash };
 };
 
 ```
