@@ -13,7 +13,9 @@ and <https://medium.com/@zarinlo/publish-technical-tutorials-in-google-codelab-f
 You can find the static hostable website in the [releases](https://github.com/Schlomon/Dash-Codelab-Tutorials/releases).
 Download the `hostable-website-v0.latest.tar.xz` file, extract and host it's content with any webserver. (e.g. `python3 -m http.server`)
 
-To quickly host the codelabs in this repository follow these steps:
+### Generate hostable site from source
+To quickly generate and host the codelab site in this repository yourselfe, follow these steps:
+After cloning:
 
 1. Change directory and get dependencies:
 
@@ -28,4 +30,4 @@ To quickly host the codelabs in this repository follow these steps:
     cd codelabs/ && claat export *.md && cd .. && gulp serve --codelabs-dir=codelabs
     ```
 
-Gulp can be replaced by any other webserver, as long as it serves the contents of the [build](build/) directory.
+`gulp` can be replaced by any other webserver, as long as it serves the contents of the `build/` directory.
