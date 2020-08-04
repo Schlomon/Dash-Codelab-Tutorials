@@ -18,11 +18,11 @@ Duration: 1
 
 ### What you'll learn
 
-* How to set up a JavaScript project which is able to interact with the Dash network
-* How to create a Dash wallet
-* How to use the evonet faucet
-* How to check be balance of your wallet
-* How to send funds
+* How to set up a JavaScript project which is able to interact with the Dash network.
+* How to create a Dash wallet.
+* How to use the evonet faucet.
+* How to check the balance of your wallet.
+* How to send funds.
 
 <!-- ------------------------ -->
 ## NPM setup
@@ -60,7 +60,7 @@ mkdir src
 touch src/index.js
 ```
 
-And install DashJS:
+Make sure you are still in the root directory of the project and install DashJS:
 
 ```sh
 npm install dash
@@ -107,8 +107,8 @@ dashJS_example
 |-- package-lock.json
 ```
 
-To test the setup place `console.log("hello")` inside `src/index.js`.
-Then in the console type `npm start`
+To test the setup place `console.log("hello");` inside `src/index.js`.
+Then in the console type `npm start`.
 If everything worked you should get an output similar to:
 
 ```text
@@ -117,6 +117,8 @@ If everything worked you should get an output similar to:
 
 hello
 ```
+
+Delete the content of `index.js` again.
 
 <!-- ------------------------ -->
 ## Sample code: Create a new wallet
@@ -207,10 +209,11 @@ Just paste the unused address from the previous step in the textbox and hit `Get
 
 ![get coins](assets/JS-Get-Coins_Sample.png)
 
-Now, let's check the balance of the wallet:
+Now, let's check the balance of the wallet.
+
+Replace the client options from before with these:
 
 ```javascript
-// replace the clientOpts from before with these:
 const clientOpts = {
   network: "evonet",
   wallet: {
@@ -219,8 +222,11 @@ const clientOpts = {
       "replace this string with your twelve word mnemonic string from previous step",
   },
 };
+```
 
-// add a new function
+And add a new function and call it:
+
+```javascript
 async function checkAccountBalance() {
   const account = await client.wallet.getAccount();
   await account.isReady();
@@ -259,11 +265,10 @@ Then run the script again with `npm start`. The output should be similar to:
 
 Duration: 2
 
-Now that you have a balance, you can send some from one address to another. Let's send 1 eDASH back to the wallet.  Add the following function:
+Now that you have a balance, you can send some from one wallet to another. Let's send 1 eDASH back to the faucet's wallet.  Add the following function:
 
 ```javascript
-// add a new function
-async function sendFunds() {
+async function sendFunds(amountInDash) {
   const account = await client.wallet.getAccount();
   await account.isReady();
 
@@ -271,7 +276,7 @@ async function sendFunds() {
     // create a transaction, everything we need is the recipient's address and the amount to be sent in satoshis
     const transaction = account.createTransaction({
       recipient: "yNPbcFfabtNmmxKdGwhHomdYfVs6gikbPf", // Evonet faucet
-      satoshis: 1 * 100000000, // 100000000 satoshis = 1 Dash
+      satoshis: Math.round(amountInDash * 100000000), // 100000000 satoshis = 1 Dash
     });
 
     // broadcast the transaction and get the transaction id
@@ -284,7 +289,7 @@ async function sendFunds() {
   }
 }
 
-sendFunds();
+sendFunds(37.5931);  // replace this number with however many DASH you have in your wallet to send everything back to the faucet.
 ```
 
 Again, comment out the last line from the previous step `// checkAccountBalance();`
@@ -300,7 +305,7 @@ Transaction broadcast!
 Transaction ID: 8699ef50e08b6c3a318beaf85928e66bdbf67857a0c560050a3655e68f265c18
 ```
 
-You can now check the account balance again like in the previous step, to confirm that 1 Dash has been sent.
+You can now check the account balance again like in the previous step, to confirm that 'however many Dash you had' have been sent.
 
 <!-- ------------------------ -->
 ## Congratulations, now play around
@@ -310,7 +315,7 @@ Duration: 1
 If you were typing along you should have noticed that VSCode shows you autocompletion results for available properties and methods on classes and instances (e.g. `new Dash.Client()`, `client.getWalletAccount()`, etc).  With that you can play around with what the SDK has to offer.
 
 The full DashJS documentation can be found under <https://dashevo.github.io/DashJS/#/>.
-For more code examples on e.g. Identities, Usernames, Datacontracts, etc. please visit <https://dashplatform.readme.io/docs/tutorial-connecting-to-evonet>.
+For more code examples on e.g. Identities, Usernames, Datacontracts, etc. please visit <https://dashplatform.readme.io/docs/tutorial-register-an-identity>.
 
 <!-- ------------------------ -->
 ## index.js
@@ -401,4 +406,30 @@ async function sendFunds() {
 // checkAccountBalance();
 
 // sendFunds();
+```
+
+<!-- ------------------------ -->
+## package.json
+
+Duration: 0
+
+And for completion here is the package.json file:
+
+```json
+{
+  "name": "dashjs_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dash": "^3.14.1",
+    "eslint": "^7.6.0"
+  }
+}
 ```
