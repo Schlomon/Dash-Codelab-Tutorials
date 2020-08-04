@@ -1,4 +1,4 @@
-# About
+# Hosting
 
 ## Getting started
 
